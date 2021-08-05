@@ -1,0 +1,22 @@
+test:
+ hostname: 127.0.0.1
+ username: root
+ password: 123456
+ database: test
+ port: 3306
+ charset: utf8
+mongo:
+ hostname: 127.0.0.1
+ port: 2793
+redis:
+ hostname: 127.0.0.1
+ password: 123456
+ port: 6379
+ num: 7
+redis-excel:
+ hostname: 127.0.0.1
+ password: 123456
+ port: 6379
+ num: 2
+delat_push:
+ hostname: http://127.0.0.1:8020

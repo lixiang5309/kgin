@@ -1,0 +1,26 @@
+//指定 protocol buffers 版本
+syntax = "proto3";
+//定义了包的名称，这将成为后面我们生成的go语言的代码的包名
+package service;
+
+option go_package = ".;kgrpc";
+//定义了一个服务名为Greeter,其中定义了一个函数SayHello它的参数定义在HelloRequest，返回值定义在HelloReply
+service Greeter {
+  rpc GetUser (Id) returns (User) {}
+  rpc GetAllUsers (All) returns (Users) {}
+}
+
+message All {
+}
+
+message Id {
+  string id = 1;
+}
+
+message User {
+  string user = 1;
+}
+
+message Users {
+  string list = 1;
+}
