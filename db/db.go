@@ -56,7 +56,7 @@ func Init() {
 			//切换到collection,没有会创建
 			Mgdb = mgdb.C("log")
 		} else {
-			log.Printf("this:error: %v", err.Error())
+			log.Printf("thismongo:error: %v", err.Error())
 		}
 	}
 }

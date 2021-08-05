@@ -3,12 +3,18 @@ package routes
 import (
 	"kgin/kapi/controller"
 
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
+
+	_ "kgin/docs"
+
 	"github.com/gin-gonic/gin"
 )
 
 func Init() *gin.Engine {
 	router := gin.Default()
 	router.GET("/", controller.Default)
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	//pprof收集cpu性能消耗
 	//pprof.Register(router)
 	//从DB加载策略

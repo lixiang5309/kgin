@@ -1,0 +1,39 @@
+info:
+  contact: {}
+paths:
+  /users/import:
+    post:
+      consumes:
+      - application/json
+      description: 导入
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      description: 登录
+      parameters:
+      - description: username
+        in: path
+        name: username
+        required: true
+        type: string
+      - description: password
+        in: path
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+swagger: "2.0"

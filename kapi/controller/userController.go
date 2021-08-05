@@ -22,7 +22,7 @@ type UserController struct {
 
 func (p *UserController) User(parentRoute *gin.RouterGroup) {
 	router := parentRoute.Group("/users")
-	router.GET("login", p.Login)
+	router.POST("login", p.Login)
 	router.POST("set_support", p.SetSupport)
 	router.GET("get_support", p.GetSupport)
 	//router.Use(middleware.Auth())
@@ -32,6 +32,13 @@ func (p *UserController) User(parentRoute *gin.RouterGroup) {
 
 var userService = new(service.UserService)
 
+// @Description 登录
+// @Accept  json
+// @Produce json
+// @Param   username     path    string     true        "username"
+// @Param   password     path    string     true        "password"
+// @Success 200 {string} string	"ok"
+// @Router /users/login [post]
 func (p *UserController) Login(c *gin.Context) {
 	username := c.Query("username")
 	password := c.Query("password")
@@ -39,6 +46,11 @@ func (p *UserController) Login(c *gin.Context) {
 	p.DataReturn(c, err, nil)
 }
 
+// @Description 导入
+// @Accept  json
+// @Produce json
+// @Success 200 {string} string	"ok"
+// @Router /users/import [post]
 func (p *UserController) Import(c *gin.Context) {
 	file, err := os.Open("./file/test.csv")
 	if err != nil {
