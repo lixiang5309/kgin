@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"kgin/db"
+	"kgin/kgrpc/server"
 	"kgin/pkg"
 	"kgin/routes"
 
@@ -21,7 +22,7 @@ func main() {
 	db.Init()
 	defer db.Close()
 	//grpc 服务端开启
-	//server.Init()
+	go server.Init()
 
 	// Initialize the routes
 	router := routes.Init()

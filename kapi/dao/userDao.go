@@ -36,8 +36,7 @@ func (p *UserDao) Import(a []types.User) error {
 
 func (p *UserDao) GetUser(id int) (types.User, error) {
 	a := new(types.User)
-	_, err := db.Db.Table("user").Where("id=?", id).Get(&a)
-	fmt.Println(err)
+	_, err := db.Db.Table("user").Where("id=?", id).Get(a)
 	if err != nil {
 		return *a, errors.New("查询失败")
 	}
@@ -46,8 +45,7 @@ func (p *UserDao) GetUser(id int) (types.User, error) {
 
 func (p *UserDao) GetAllUser() ([]types.User, error) {
 	a := make([]types.User, 0)
-	_, err := db.Db.Table("user").Get(a)
-	fmt.Println(err)
+	err := db.Db.Table("user").Find(&a)
 	if err != nil {
 		return a, errors.New("查询失败")
 	}
